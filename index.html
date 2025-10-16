@@ -14,7 +14,7 @@
       --gris-bord:#e5ece7;
     }
 
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family: Helvetica, Arial, sans-serif;
@@ -22,36 +22,54 @@
       color:var(--texte);
     }
 
-    /* En-tête reconfiguré: bandeau blanc + logo, puis mince séparation verte */
+    /* En-tête reconfiguré: bandeau blanc + logo 420px, fine ligne verte, puis sous-bande verte avec le texte */
     header{
       background: var(--blanc);
       color:#000;
       text-align:center;
     }
-
     .header-inner{
       max-width:1100px;
       margin:0 auto;
-      padding:1.2rem 1rem 0.4rem 1rem; /* réduit la hauteur */
+      padding:1.2rem 1rem 0.4rem 1rem; /* bandeau blanc compact au-dessus du logo */
     }
-
     /* Logo centré, non cliquable */
     .brand-logo{
       display:block;
       margin:0 auto;
-      width:160px;   /* ajuste au besoin */
-      height:auto;
+      width:420px;      /* demandé */
+      height:auto;      /* respect des proportions */
     }
-
-    /* Trait/ligne verte très fine sous le logo (~1mm) */
+    /* Fine séparation verte (~1 mm) juste sous le logo */
     .header-separator{
-      height:2px;         /* environ 1 à 1.5 mm selon écrans */
+      height:2px; /* ≈1–1.5 mm selon écran */
       background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
-      margin-top:6px;     /* commence juste sous le logo */
+      margin-top:6px;
       box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
+    /* Bandeau vert sous le logo, contenant les deux lignes */
+    .subheader-green{
+      background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
+      color:#ffffff;
+      padding:0.9rem 1rem 1rem;
+    }
+    .subheader-green .subtitle{
+      margin:0 0 0.25rem 0;
+      font-weight:600;
+      font-size:1.25rem;
+      letter-spacing:0.02em;
+      color:#ffffff;
+    }
+    .subheader-green .tagline{
+      display:block;
+      margin:0;
+      font-weight:400;
+      font-size:1.05rem;
+      opacity:0.95;
+      color:#ffffff;
+    }
 
-    /* Barre de navigation sur fond très clair, textes blancs si fond vert derrière */
+    /* Barre de navigation (sous le bandeau vert) */
     nav{
       background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
       padding:0.8rem 1rem;
@@ -68,9 +86,9 @@
       transition:background .15s;
       display:inline-block;
     }
-    nav a:hover{ background:rgba(255,255,255,0.22);}
+    nav a:hover{ background:rgba(255,255,255,0.22); }
 
-    /* Offres */
+    /* OFFRES */
     .offers{
       display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
       margin:2.2rem auto 2rem; max-width:1100px;
@@ -84,20 +102,20 @@
       border-bottom: 4px solid var(--vert-fonce);
       animation:fadeInUp 0.8s ease both; opacity:0;
     }
-    .card.pilotage{ border-bottom-color: var(--vert);}
-    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
+    .card.pilotage{ border-bottom-color: var(--vert); }
+    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322; }
     .card .badge{
       position:absolute; top:14px; right:16px;
       background: var(--vert); color:#fff; font-size:0.92rem; font-weight:600;
       border-radius:20px; padding:0.22em 0.9em;
       box-shadow: 0 1px 7px #00502230; z-index:2;
     }
-    .card h3{ font-size:1.28rem; margin:0 0 0.6rem;}
+    .card h3{ font-size:1.28rem; margin:0 0 0.6rem; }
     .card .price{
       font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem;
     }
 
-    /* Liste sans coches, texte en noir */
+    /* Listes en noir, sans coches ni indentation gauche */
     .card ul{
       list-style:none; padding:0; margin:0.2rem 0 0;
     }
@@ -105,9 +123,9 @@
       padding:0.45em 0;
       border-bottom:1px solid var(--gris-bord);
       font-size:1.02rem; letter-spacing:0.01em;
-      color:#111;                 /* noir */
+      color:#111;
       text-align:left;
-      padding-left:0;             /* pas d’icône ni retrait */
+      padding-left:0;
     }
 
     .cta-btn{
@@ -118,7 +136,7 @@
       transition:background .18s, transform .12s;
       box-shadow:0 1px 8px #00502222;
     }
-    .cta-btn:hover{ background:var(--vert); transform:scale(1.04);}
+    .cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
 
     /* Services complémentaires */
     .more-services{
@@ -136,9 +154,9 @@
       background:#f9fbfa; border-left:4px solid var(--vert);
       border-radius:0.9em; padding:1.2em; min-width:180px; max-width:360px; margin:0 auto;
     }
-    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem;}
-    .service-block ul{ margin:0; padding-left:1.1em;}
-    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
+    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem; }
+    .service-block ul{ margin:0; padding-left:1.1em; }
+    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0; }
 
     /* Avantages */
     .features{
@@ -147,46 +165,53 @@
     .feature-item{
       flex:1 1 220px; background:#e4f8e5; border-radius:1em; padding:1.05em; text-align:center; min-width:180px;
     }
-    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
-    .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce);}
+    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em; }
+    .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce); }
 
     /* Contact */
     .contact-section{
       background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
     }
-    .contact-section h3{ color:#fff; margin:0 0 1.1rem;}
-    .contact-info p{ margin:0.5em 0; font-size:1.08rem;}
-    .contact-info b{ font-size:1.12rem;}
+    .contact-section h3{ color:#fff; margin:0 0 1.1rem; }
+    .contact-info p{ margin:0.5em 0; font-size:1.08rem; }
+    .contact-info b{ font-size:1.12rem; }
     .brand-mention{
       margin-top:1.2rem; font-size:1rem; opacity:0.95;
     }
 
     /* Footer */
-    footer{ background:#222; color:#fff; text-align:center; padding:1rem;}
-    footer p{ margin:0; font-size:0.95rem;}
+    footer{ background:#222; color:#fff; text-align:center; padding:1rem; }
+    footer p{ margin:0; font-size:0.95rem; }
 
     /* Responsive */
     @media (max-width:900px){
-      .offers, .features{ flex-direction:column; align-items:center;}
-      .card, .service-block{ max-width:98vw;}
+      .offers, .features{ flex-direction:column; align-items:center; }
+      .card, .service-block{ max-width:98vw; }
       .services-grid{ grid-template-columns: 1fr; }
-      .brand-logo{ width:140px; }
+      .brand-logo{ width:320px; }
     }
 
     @keyframes fadeInUp{
-      0%{ opacity:0; transform: translateY(40px);}
-      100%{ opacity:1; transform:none;}
+      0%{ opacity:0; transform: translateY(40px); }
+      100%{ opacity:1; transform:none; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="header-inner">
-      <!-- Logo centré; assure-toi que le fichier existe bien à la racine -->
+      <!-- Logo centré 420px (non cliquable) -->
       <img src="ADNRxCOGEX.png" alt="Logo ADNR x COGEX" class="brand-logo">
     </div>
-    <!-- Ligne verte très fine commençant ~1mm sous le logo -->
+
+    <!-- Fine ligne verte (~1 mm) juste sous le logo -->
     <div class="header-separator"></div>
+
+    <!-- Bandeau vert avec le texte sous le logo -->
+    <div class="subheader-green">
+      <h2 class="subtitle">expert-comptable spécialisé BNC</h2>
+      <em class="tagline">plus qu’un expert comptable, votre partenaire business</em>
+    </div>
 
     <nav>
       <a href="#offres">Offres</a>
@@ -300,7 +325,7 @@
         <p><b>Site web :</b> [Votre site web]</p>
         <p><b>Adresse :</b> [Votre adresse]</p>
       </div>
-      <!-- Mention sous contactez-nous -->
+      <!-- Mention de marque sous Contact -->
       <div class="brand-mention">ADNR x COGEX</div>
     </section>
   </main>
@@ -317,4 +342,3 @@
   </script>
 </body>
 </html>
-

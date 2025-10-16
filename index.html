@@ -3,138 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>ADNR x COGEX - Plaquette digitale</title>
-  <meta name="description" content="ADNR x COGEX - Plaquette interactive pour professions libérales et santé intégrative">
+  <title>Plaquette digitale</title>
+  <meta name="description" content="Plaquette interactive pour professions libérales et santé intégrative">
   <style>
-    body {
-      margin:0; padding:0; box-sizing:border-box;
-      font-family: 'Helvetica', Arial, sans-serif;
-      background:#f7f8fa; color:#222;
+    :root{
+      --vert-fonce:#005022;
+      --vert:#007833;
+      --blanc:#ffffff;
+      --texte:#222222;
+      --gris-bord:#e5ece7;
     }
-    header {
-      background: linear-gradient(90deg, #005022 80%, #007833 100%);
-      color:white; padding:2rem 0; text-align:center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Helvetica, Arial, sans-serif;
+      background:#f7f8fa;
+      color:var(--texte);
     }
-    header h1 { margin:0 0 0.5rem; font-size:2.7rem; letter-spacing:0.05em; }
-    header h2 { margin:0 0 0.3rem; font-weight:500; font-size:1.3rem; }
-    header em { font-weight:400; opacity:0.8; display:block; font-size:1.1rem; margin-top:0.4em;}
-    nav { margin-top:1.6rem; }
-    nav a {
-      color:#fff; text-decoration:none;
+
+    /* En-tête reconfiguré: bandeau blanc + logo, puis mince séparation verte */
+    header{
+      background: var(--blanc);
+      color:#000;
+      text-align:center;
+    }
+
+    .header-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:1.2rem 1rem 0.4rem 1rem; /* réduit la hauteur */
+    }
+
+    /* Logo centré, non cliquable */
+    .brand-logo{
+      display:block;
+      margin:0 auto;
+      width:160px;   /* ajuste au besoin */
+      height:auto;
+    }
+
+    /* Trait/ligne verte très fine sous le logo (~1mm) */
+    .header-separator{
+      height:2px;         /* environ 1 à 1.5 mm selon écrans */
+      background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
+      margin-top:6px;     /* commence juste sous le logo */
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    }
+
+    /* Barre de navigation sur fond très clair, textes blancs si fond vert derrière */
+    nav{
+      background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
+      padding:0.8rem 1rem;
+      text-align:center;
+    }
+    nav a{
+      color:#fff;
+      text-decoration:none;
       padding:0.45em 1.1em;
-      margin:0 0.4em;
+      margin:0 0.35em;
       border-radius:30px;
-      background:rgba(255,255,255,0.08);
-      font-weight:600; transition:background 0.15s;
+      background:rgba(255,255,255,0.10);
+      font-weight:600;
+      transition:background .15s;
+      display:inline-block;
     }
-    nav a:hover { background:rgba(255,255,255,0.19);}
-    .offers { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin:3rem auto 2rem; max-width:1100px;}
-    .card {
-      background:#fff; border-radius:1.3em; box-shadow: 0 8px 32px rgba(0,80,34,0.08), 0 1.5px 10px rgba(0,80,34,0.05);
-      padding:2.3rem 2rem 2.1rem; max-width:340px; min-width:270px; flex:1; text-align:center;
-      position:relative; overflow:hidden;
-      border-bottom: 4px solid #005022;
-      animation:fadeInUp 1s cubic-bezier(.3,1.3,.3,1) forwards; opacity:0;
+    nav a:hover{ background:rgba(255,255,255,0.22);}
+
+    /* Offres */
+    .offers{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
+      margin:2.2rem auto 2rem; max-width:1100px;
     }
-    .card.pilotage { border-bottom:4px solid #007833; }
-    .card.active, .card.pilotage { box-shadow: 0 14px 36px #00783322;}
-    .card .badge {
-      position:absolute; top:20px; right:24px;
-      background: #007833; color:#fff; font-size:0.98rem; font-weight:600;
-      border-radius:20px; padding:0.25em 1em; letter-spacing:0.03em;
-      box-shadow: 0 1px 7px #00502230;
-      z-index:2;
+    .card{
+      background:#fff; border-radius:1.1em;
+      box-shadow: 0 8px 28px rgba(0,80,34,0.08), 0 1.5px 10px rgba(0,80,34,0.05);
+      padding:1.8rem 1.4rem 1.6rem;
+      max-width:340px; min-width:270px; flex:1;
+      text-align:left; position:relative; overflow:hidden;
+      border-bottom: 4px solid var(--vert-fonce);
+      animation:fadeInUp 0.8s ease both; opacity:0;
     }
-    .card h3 { font-size:1.45rem; margin:0.3rem 0 0.4rem;}
-    .card .price {
-      font-size:2.05rem; color:#005022; font-weight:700; margin:0.5rem 0 1rem;
+    .card.pilotage{ border-bottom-color: var(--vert);}
+    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
+    .card .badge{
+      position:absolute; top:14px; right:16px;
+      background: var(--vert); color:#fff; font-size:0.92rem; font-weight:600;
+      border-radius:20px; padding:0.22em 0.9em;
+      box-shadow: 0 1px 7px #00502230; z-index:2;
     }
-    .card ul { list-style:none; padding:0; margin:0.8em 0 0;}
-    .card ul li {
-      padding:0.4em 0; border-bottom:1px solid #e5ece7;
-      font-size:1.04rem; letter-spacing:0.01em;
-      color:#363; text-align:left;
-      position:relative; padding-left:1.7em;
+    .card h3{ font-size:1.28rem; margin:0 0 0.6rem;}
+    .card .price{
+      font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem;
     }
-    .card ul li:before {
-      content:'✓ '; position:absolute; left:0.2em; color:#007833;
-      font-weight:900; font-size:1.25em;
+
+    /* Liste sans coches, texte en noir */
+    .card ul{
+      list-style:none; padding:0; margin:0.2rem 0 0;
     }
-    .cta-btn {
-      display:inline-block; margin-top:1.7em;
-      background:#005022; color:#fff; border:none;
-      border-radius:24px; padding:0.85em 2.1em;
-      font-size:1.05rem; font-weight:700; cursor:pointer;
-      transition:background 0.18s, transform 0.12s;
+    .card ul li{
+      padding:0.45em 0;
+      border-bottom:1px solid var(--gris-bord);
+      font-size:1.02rem; letter-spacing:0.01em;
+      color:#111;                 /* noir */
+      text-align:left;
+      padding-left:0;             /* pas d’icône ni retrait */
+    }
+
+    .cta-btn{
+      display:inline-block; margin-top:1.2em;
+      background:var(--vert-fonce); color:#fff; border:none;
+      border-radius:24px; padding:0.75em 1.6em;
+      font-size:1.02rem; font-weight:700; cursor:pointer;
+      transition:background .18s, transform .12s;
       box-shadow:0 1px 8px #00502222;
     }
-    .cta-btn:hover { background:#007833; transform:scale(1.06);}
-    /* Services complémentaires - 2x2 */
-    .more-services {
-      max-width:900px; margin: 3.5rem auto; padding:2.2rem 1rem 1.8rem 1rem;
-      background:#fff; border-radius:2em;
-      box-shadow: 0 8px 32px #00502210;
+    .cta-btn:hover{ background:var(--vert); transform:scale(1.04);}
+
+    /* Services complémentaires */
+    .more-services{
+      max-width:900px; margin: 3rem auto; padding:1.8rem 1rem 1.4rem;
+      background:#fff; border-radius:1.4em;
+      box-shadow: 0 8px 28px #00502210;
     }
-    .more-services h3 {
-      color:#005022; text-align: center; font-size: 1.6rem; margin-bottom: 1.6rem;
+    .more-services h3{
+      color:var(--vert-fonce); text-align:center; font-size:1.5rem; margin-bottom:1.2rem;
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+    .services-grid{
+      display:grid; grid-template-columns: 1fr 1fr; gap:1.6rem;
     }
-    .service-block {
-      background: #f9fbfa;
-      border-left: 4px solid #007833;
-      border-radius: 1em;
-      padding: 1.4em;
-      min-width: 180px;
-      max-width: 350px;
-      margin: 0 auto;
-      box-sizing: border-box;
+    .service-block{
+      background:#f9fbfa; border-left:4px solid var(--vert);
+      border-radius:0.9em; padding:1.2em; min-width:180px; max-width:360px; margin:0 auto;
     }
-    .service-block h4 {
-      color:#007833; margin-top:0; font-size:1.25rem; margin-bottom: 0.8em;
-    }
-    .service-block ul {
-      margin:0; padding-left:1.4em;
-    }
-    .service-block li {
-      font-size:1rem; line-height:1.6; margin:0.2em 0;
-    }
+    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem;}
+    .service-block ul{ margin:0; padding-left:1.1em;}
+    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
+
     /* Avantages */
-    .features {margin:2rem auto 3rem auto; max-width:950px; display:flex; flex-wrap:wrap; gap:1.1em;}
-    .feature-item {flex:1 1 220px; background:#e4f8e5; border-radius:1.1em; padding:1.2em; text-align:center; min-width:180px;}
-    .feature-item span {font-size:2em; display:block; margin-bottom:0.2em;}
-    .feature-item h5 {margin: 0.19em 0 0.33em 0; color:#005022;}
-    /* Contact sans émojis + lien mailto */
-    .contact-section {background:#005022; color:#fff; text-align:center; padding:2.7rem 1rem 2rem;}
-    .contact-section h3 {color:#fff; margin-bottom:1.5rem;}
-    .contact-info p {margin:0.5em 0; font-size:1.1rem;}
-    .contact-info b {font-size:1.16rem;}
-    /* Footer */
-    footer {background:#222; color:#fff; text-align:center; padding:1rem;}
-    footer p {margin:0; font-size:0.95rem;}
-    /* Responsive */
-    @media (max-width:900px) {
-      .offers, .features { flex-direction:column; align-items:center;}
-      .card, .service-block {max-width:98vw;}
-      .services-grid { grid-template-columns: 1fr; }
+    .features{
+      margin:2rem auto 3rem; max-width:950px; display:flex; flex-wrap:wrap; gap:1em; justify-content:center;
     }
-    @keyframes fadeInUp {
-      0% { opacity:0; transform: translateY(60px);}
-      100% { opacity:1; transform: none;}
+    .feature-item{
+      flex:1 1 220px; background:#e4f8e5; border-radius:1em; padding:1.05em; text-align:center; min-width:180px;
+    }
+    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
+    .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce);}
+
+    /* Contact */
+    .contact-section{
+      background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
+    }
+    .contact-section h3{ color:#fff; margin:0 0 1.1rem;}
+    .contact-info p{ margin:0.5em 0; font-size:1.08rem;}
+    .contact-info b{ font-size:1.12rem;}
+    .brand-mention{
+      margin-top:1.2rem; font-size:1rem; opacity:0.95;
+    }
+
+    /* Footer */
+    footer{ background:#222; color:#fff; text-align:center; padding:1rem;}
+    footer p{ margin:0; font-size:0.95rem;}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .offers, .features{ flex-direction:column; align-items:center;}
+      .card, .service-block{ max-width:98vw;}
+      .services-grid{ grid-template-columns: 1fr; }
+      .brand-logo{ width:140px; }
+    }
+
+    @keyframes fadeInUp{
+      0%{ opacity:0; transform: translateY(40px);}
+      100%{ opacity:1; transform:none;}
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Logo non cliquable -->
-    <img src="ADNRxCOGEX.png" alt="Logo ADNR x COGEX" style="display:block; margin:0 auto 1rem auto; width:420px; height:auto;">
-    <h1>ADNR x COGEX</h1>
-    <h2>Expert-Comptable Spécialisé Professions Libérales</h2>
-    <em>Plus qu'un expert-comptable, votre partenaire business</em>
+    <div class="header-inner">
+      <!-- Logo centré; assure-toi que le fichier existe bien à la racine -->
+      <img src="ADNRxCOGEXV.png" alt="Logo ADNR x COGEX" class="brand-logo">
+    </div>
+    <!-- Ligne verte très fine commençant ~1mm sous le logo -->
+    <div class="header-separator"></div>
+
     <nav>
       <a href="#offres">Offres</a>
       <a href="#services">Services</a>
@@ -146,7 +199,7 @@
   <main>
     <!-- OFFRES PRINCIPALES -->
     <section id="offres" class="offers">
-      <div class="card essentiel" style="animation-delay: .2s">
+      <div class="card essentiel" style="animation-delay:.1s">
         <h3>ESSENTIEL</h3>
         <div class="price">69€ HT/mois</div>
         <ul>
@@ -159,7 +212,8 @@
           Je demande ce forfait
         </button>
       </div>
-      <div class="card pilotage active" style="animation-delay: .35s">
+
+      <div class="card pilotage active" style="animation-delay:.22s">
         <div class="badge">LE PLUS POPULAIRE</div>
         <h3>PILOTAGE</h3>
         <div class="price">89€ HT/mois</div>
@@ -174,7 +228,8 @@
           Découvrir Pilotage
         </button>
       </div>
-      <div class="card performance" style="animation-delay: .5s">
+
+      <div class="card performance" style="animation-delay:.34s">
         <h3>PERFORMANCE</h3>
         <div class="price">119€ HT/mois</div>
         <ul>
@@ -190,8 +245,8 @@
         </button>
       </div>
     </section>
-    
-    <!-- SERVICES COMPLÉMENTAIRES : 2x2 -->
+
+    <!-- SERVICES COMPLÉMENTAIRES -->
     <section id="services" class="more-services">
       <h3>Services Complémentaires</h3>
       <div class="services-grid">
@@ -236,7 +291,7 @@
       <div class="feature-item"><span>⚡</span><h5>RÉACTIVITÉ</h5><div>Réponses garanties sous 48h en formule Performance</div></div>
     </section>
 
-    <!-- CONTACT - Mailto sur l'adresse -->
+    <!-- CONTACT -->
     <section id="contact" class="contact-section">
       <h3>Contactez-nous</h3>
       <div class="contact-info">
@@ -245,18 +300,20 @@
         <p><b>Site web :</b> [Votre site web]</p>
         <p><b>Adresse :</b> [Votre adresse]</p>
       </div>
+      <!-- Mention sous contactez-nous -->
+      <div class="brand-mention">ADNR x COGEX</div>
     </section>
   </main>
+
   <footer>
     <p>COGEX &copy; 2025</p>
   </footer>
+
   <script>
-    // Animations d'apparition
+    // Apparition des cartes
     document.addEventListener('DOMContentLoaded', ()=>{
-      [...document.querySelectorAll('.card')].forEach(card => card.style.opacity=1);
+      document.querySelectorAll('.card').forEach((c)=>{ c.style.opacity=1; });
     });
   </script>
 </body>
 </html>
-
-

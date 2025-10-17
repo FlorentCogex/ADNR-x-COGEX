@@ -85,7 +85,7 @@
     .offers{
       display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
       margin:2.2rem auto 2rem; max-width:1100px;
-      align-items:stretch; /* aligne toutes les cartes en hauteur */
+      align-items:stretch; /* mêmes hauteurs de cartes */
     }
     .card{
       background:#fff; border-radius:1.1em;
@@ -96,24 +96,25 @@
       border-bottom: 4px solid var(--vert-fonce);
       animation:fadeInUp 0.8s ease both; opacity:0;
 
-      /* clé: carte en colonne, pour pousser le bouton en bas */
       display:flex; flex-direction:column;
     }
-    .card.pilotage{ border-bottom-color: var(--vert);}
-    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
+    .card.pilotage{ border-bottom-color: var(--vert); }
+    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322; }
     .card .badge{
       position:absolute; top:14px; right:16px;
       background: var(--vert); color:#fff; font-size:0.92rem; font-weight:600;
       border-radius:20px; padding:0.22em 0.9em;
       box-shadow: 0 1px 7px #00502230; z-index:2;
     }
-    .card h3{ font-size:1.28rem; margin:0 0 0.6rem;}
+
+    /* Titre + prix */
+    .card h3{ font-size:1.28rem; margin:0 0 0.6rem; }
     .card .price{
       font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem;
     }
-    .card ul{
-      list-style:none; padding:0; margin:0.2rem 0 0;
-    }
+
+    /* Listes en noir, sans coches */
+    .card ul{ list-style:none; padding:0; margin:0.2rem 0 0; }
     .card ul li{
       padding:0.45em 0;
       border-bottom:1px solid var(--gris-bord);
@@ -123,9 +124,15 @@
       padding-left:0;
     }
 
-    /* espaceur qui prend la hauteur disponible avant le bouton */
-    .spacer{ flex:1 1 auto; }
+    /* ALIGNEMENT FIN DES PREMIÈRES LIGNES LISTÉES ENTRE CARTES */
+    /* On ajuste l’espace juste avant la liste pour compenser les différences de contenus */
+    .card.essentiel .price{ margin-bottom: 0.8rem; }
+    .card.essentiel ul{ margin-top: 0.6rem; } /* rapproche un peu la liste */
 
+    .card.pilotage .price{ margin-bottom: 1.0rem; }   /* pousse légèrement la liste vers le bas */
+    .card.performance .price{ margin-bottom: 1.0rem; } /* idem pour Performance */
+
+    /* ESPACE AVANT BOUTONS (~1 cm ≈ 40px) + bouton en bas */
     .cta-btn{
       background:var(--vert-fonce); color:#fff; border:none;
       border-radius:24px; padding:0.75em 1.6em;
@@ -133,9 +140,9 @@
       transition:background .18s, transform .12s;
       box-shadow:0 1px 8px #00502222;
 
-      /* clé: colle le bouton au bas de la carte */
-      margin-top:auto;
-      align-self:flex-start; /* évite l’étirement horizontal */
+      margin-top:auto;     /* colle le bouton en bas */
+      margin-top:40px;     /* et descend visuellement de ~1 cm */
+      align-self:flex-start;
     }
     .cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
 
@@ -155,11 +162,11 @@
       background:#f9fbfa; border-left:4px solid var(--vert);
       border-radius:0.9em; padding:1.2em; min-width:180px; max-width:360px; margin:0 auto;
     }
-    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem;}
-    .service-block ul{ margin:0; padding-left:1.1em;}
-    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
+    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem; }
+    .service-block ul{ margin:0; padding-left:1.1em; }
+    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0; }
 
-    /* Avantages */
+    /* Avantages (4 sur une ligne) */
     .features{
       margin:2rem auto 3rem; max-width:950px;
       display:flex; flex-wrap:nowrap; gap:1em; justify-content:center;
@@ -167,7 +174,7 @@
     .feature-item{
       flex:1 1 220px; background:#e4f8e5; border-radius:1em; padding:1.05em; text-align:center; min-width:180px; max-width:230px;
     }
-    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
+    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em; }
     .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce); }
 
     /* ESPACE CLIENT */
@@ -198,47 +205,45 @@
       cursor: pointer;
       transition: background .15s, transform .12s;
     }
-    .client-btn:hover {
-      background: #007833;
-      transform: scale(1.04);
-    }
+    .client-btn:hover { background: #007833; transform: scale(1.04); }
 
+    /* Contact */
     .contact-section{
       background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
     }
-    .contact-section h3{ color:#fff; margin:0 0 1.1rem;}
-    .contact-info p{ margin:0.5em 0; font-size:1.08rem;}
-    .contact-info b{ font-size:1.12rem;}
+    .contact-section h3{ color:#fff; margin:0 0 1.1rem; }
+    .contact-info p{ margin:0.5em 0; font-size:1.08rem; }
+    .contact-info b{ font-size:1.12rem; }
     .oec-img{
       margin-top:1.6rem;
       display:block;
       margin-left:auto;
       margin-right:auto;
-      width:240px;   /* réduit à 240 px */
+      width:240px;  /* 240 px demandé */
       max-width:90vw;
       height:auto;
     }
 
-    footer{ background:#222; color:#fff; text-align:center; padding:1rem;}
+    footer{ background:#222; color:#fff; text-align:center; padding:1rem; }
     footer p{ margin:0; font-size:0.95rem; }
 
     /* Responsive */
     @media (max-width:1150px){
-      .features{ flex-wrap:wrap; gap:1em;}
-      .feature-item{max-width:99vw;}
+      .features{ flex-wrap:wrap; gap:1em; }
+      .feature-item{ max-width:99vw; }
     }
     @media (max-width:950px){
-      .offers{ flex-direction:column; align-items:center;}
+      .offers{ flex-direction:column; align-items:center; }
       .card, .service-block, .client-section{ max-width:98vw; }
       .services-grid{ grid-template-columns: 1fr; }
-      .brand-logo{ width:320px;}
-      .features{flex-wrap:wrap;}
-      .cta-btn{ align-self:center; } /* centrer le bouton sur mobile */
+      .brand-logo{ width:320px; }
+      .features{ flex-wrap:wrap; }
+      .cta-btn{ align-self:center; }
     }
 
     @keyframes fadeInUp{
-      0%{ opacity:0; transform: translateY(40px);}
-      100%{ opacity:1; transform:none;}
+      0%{ opacity:0; transform: translateY(40px); }
+      100%{ opacity:1; transform:none; }
     }
   </style>
 </head>
@@ -248,9 +253,7 @@
       <!-- Logo centré 420px (non cliquable) -->
       <img src="ADNRxCOGEX.png" alt="Logo ADNR x COGEX" class="brand-logo">
     </div>
-    <!-- Fine ligne verte (~1 mm) juste sous le logo -->
     <div class="header-separator"></div>
-    <!-- Bandeau vert avec la nouvelle ligne -->
     <div class="subheader-green">
       <h2 class="subtitle">Cabinet d'expertise-comptable spécialisé Professions Libérales</h2>
     </div>
@@ -275,7 +278,6 @@
           <li>Établissement déclarations fiscales courantes</li>
           <li>Bilan visé par un expert comptable</li>
         </ul>
-        <div class="spacer"></div>
         <button class="cta-btn"
           onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Essentiel'">
           Je demande ce forfait
@@ -293,7 +295,6 @@
           <li>Vérification des appels de cotisations sociales</li>
           <li>Tableau de bord en ligne</li>
         </ul>
-        <div class="spacer"></div>
         <button class="cta-btn"
           onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d\'information - Forfait Pilotage'">
           Découvrir Pilotage
@@ -311,7 +312,6 @@
           <li>Aide à la déclaration des revenus professionnels</li>
           <li>Réponses sous 48h</li>
         </ul>
-        <div class="spacer"></div>
         <button class="cta-btn"
           onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Performance'">
           Forfait Premium
@@ -344,7 +344,6 @@
         <p><b>Site web :</b> [Votre site web]</p>
         <p><b>Adresse :</b> [Votre adresse]</p>
       </div>
-      <!-- Image OEC réduite à 240 px -->
       <img src="OEC.png" alt="OEC" class="oec-img">
     </section>
   </main>

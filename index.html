@@ -1,359 +1,236 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Plaquette digitale</title>
-  <meta name="description" content="Plaquette interactive pour professions libérales et santé intégrative">
-  <style>
-    :root{
-      --vert-fonce:#005022;
-      --vert:#007833;
-      --blanc:#ffffff;
-      --texte:#222222;
-      --gris-bord:#e5ece7;
-    }
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: Helvetica, Arial, sans-serif;
+  background:#f7f8fa;
+  color:var(--texte);
+}
 
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: Helvetica, Arial, sans-serif;
-      background:#f7f8fa;
-      color:var(--texte);
-    }
+header{
+  background: var(--blanc);
+  color:#000;
+  text-align:center;
+}
+.header-inner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:1.2rem 1rem 0.4rem 1rem;
+}
+.brand-logo{
+  display:block;
+  margin:0 auto;
+  width:420px;
+  height:auto;
+}
+.header-separator{
+  height:2px;
+  background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
+  margin-top:6px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+.subheader-green{
+  background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
+  color:#ffffff;
+  padding:0.9rem 1rem 1rem;
+}
+.subheader-green .subtitle{
+  margin:0;
+  font-weight:600;
+  font-size:1.20rem;
+  letter-spacing:0.02em;
+  color:#ffffff;
+}
 
-    header{
-      background: var(--blanc);
-      color:#000;
-      text-align:center;
-    }
-    .header-inner{
-      max-width:1100px;
-      margin:0 auto;
-      padding:1.2rem 1rem 0.4rem 1rem;
-    }
-    .brand-logo{
-      display:block;
-      margin:0 auto;
-      width:420px;
-      height:auto;
-    }
-    .header-separator{
-      height:2px;
-      background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
-      margin-top:6px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    }
-    .subheader-green{
-      background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
-      color:#ffffff;
-      padding:0.9rem 1rem 1rem;
-    }
-    .subheader-green .subtitle{
-      margin:0;
-      font-weight:600;
-      font-size:1.20rem;
-      letter-spacing:0.02em;
-      color:#ffffff;
-    }
+nav{
+  background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
+  padding:0.8rem 1rem;
+  text-align:center;
+}
+nav a, .nav-btn{
+  color:#fff;
+  text-decoration:none;
+  padding:0.45em 1.1em;
+  margin:0 0.35em;
+  border-radius:30px;
+  background:rgba(255,255,255,0.10);
+  font-weight:600;
+  transition:background .15s;
+  display:inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  text-transform:unset;
+}
+.nav-btn { text-transform:unset; }
+nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
 
-    nav{
-      background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
-      padding:0.8rem 1rem;
-      text-align:center;
-    }
-    nav a, .nav-btn{
-      color:#fff;
-      text-decoration:none;
-      padding:0.45em 1.1em;
-      margin:0 0.35em;
-      border-radius:30px;
-      background:rgba(255,255,255,0.10);
-      font-weight:600;
-      transition:background .15s;
-      display:inline-block;
-      font-family: inherit;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      text-transform:unset;
-    }
-    .nav-btn { text-transform:unset; }
-    nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
+/* OFFRES */
+.offers{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
+  margin:2.2rem auto 2rem; max-width:1100px;
+  align-items:stretch;
+}
+.card{
+  background:#fff; border-radius:1.1em;
+  box-shadow: 0 8px 28px rgba(0,80,34,0.08), 0 1.5px 10px rgba(0,80,34,0.05);
+  padding:1.8rem 1.4rem 1.6rem;
+  max-width:340px; min-width:270px; flex:1;
+  position:relative; overflow:hidden;
+  border-bottom: 4px solid var(--vert-fonce);
+  animation:fadeInUp 0.8s ease both; opacity:0;
 
-    /* OFFRES */
-    .offers{
-      display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
-      margin:2.2rem auto 2rem; max-width:1100px;
-      align-items:stretch;
-    }
-    .card{
-      background:#fff; border-radius:1.1em;
-      box-shadow: 0 8px 28px rgba(0,80,34,0.08), 0 1.5px 10px rgba(0,80,34,0.05);
-      padding:1.8rem 1.4rem 1.6rem;
-      max-width:340px; min-width:270px; flex:1;
-      position:relative; overflow:hidden;
-      border-bottom: 4px solid var(--vert-fonce);
-      animation:fadeInUp 0.8s ease both; opacity:0;
+  display:flex; flex-direction:column; /* clé */
+}
+.card.pilotage{ border-bottom-color: var(--vert);}
+.card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
+.card .badge{
+  position:absolute; top:14px; right:16px;
+  background: var(--vert); color:#fff; font-size:0.92rem; font-weight:600;
+  border-radius:20px; padding:0.22em 0.9em;
+  box-shadow: 0 1px 7px #00502230; z-index:2;
+}
+.card h3{ font-size:1.28rem; margin:0 0 0.6rem; }
+.card .price{ font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem; }
 
-      display:flex; flex-direction:column;
-    }
-    .card.pilotage{ border-bottom-color: var(--vert);}
-    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
-    .card .badge{
-      position:absolute; top:14px; right:16px;
-      background: var(--vert); color:#fff; font-size:0.92rem; font-weight:600;
-      border-radius:20px; padding:0.22em 0.9em;
-      box-shadow: 0 1px 7px #00502230; z-index:2;
-    }
-    .card h3{ font-size:1.28rem; margin:0 0 0.6rem; }
-    .card .price{ font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem; }
-    .card ul{ list-style:none; padding:0; margin:0.2rem 0 0; }
-    .card ul li{
-      padding:0.45em 0;
-      border-bottom:1px solid var(--gris-bord);
-      font-size:1.02rem; letter-spacing:0.01em;
-      color:#111;
-      text-align:left;
-      padding-left:0;
-    }
-    .card.essentiel .price{ margin-bottom: 0.8rem; }
-    .card.essentiel ul{ margin-top: 0.6rem; }
-    .card.pilotage .price{ margin-bottom: 1.0rem; }
-    .card.performance .price{ margin-bottom: 1.0rem; }
+/* Contenu qui peut grandir pour pousser le bouton en bas */
+.card .content-flex{
+  display:block;
+  flex:1 1 auto; /* clé: occupe l’espace restant */
+}
+.card .content-flex ul{
+  list-style:none; padding:0; margin:0.2rem 0 0;
+}
+.card .content-flex ul li{
+  padding:0.45em 0;
+  border-bottom:1px solid var(--gris-bord);
+  font-size:1.02rem; letter-spacing:0.01em;
+  color:#111;
+  text-align:left;
+  padding-left:0;
+}
 
-    /* ESPACE AVANT BOUTONS (~1 cm ≈ 40px) + bouton en bas */
-    .cta-btn{
-      background:var(--vert-fonce); 
-      color:#fff; 
-      border:none;
-      border-radius:24px; 
-      padding:0.75em 1.6em;
-      font-size:1.02rem; 
-      font-weight:700; 
-      cursor:pointer;
-      transition:background .18s, transform .12s;
-      box-shadow:0 1px 8px #00502222;
+/* ALIGNEMENT fin des premières lignes listées: petites variations de marge */
+.card.essentiel .price{ margin-bottom: 0.8rem; }
+.card.essentiel .content-flex ul{ margin-top: 0.6rem; }
+.card.pilotage .price{ margin-bottom: 1.0rem; }
+.card.performance .price{ margin-bottom: 1.0rem; }
 
-      margin-top:auto;
-      margin-top:40px;
-      align-self:flex-start;
-    }
-    .cta-btn:hover{ 
-      background:var(--vert); 
-      transform:scale(1.04); 
-    }
-    .card.essentiel .cta-btn{ 
-      margin-top:56px; 
-    }
+/* Bouton en bas + décalage visuel */
+.cta-btn{
+  background:var(--vert-fonce); 
+  color:#fff; 
+  border:none;
+  border-radius:24px; 
+  padding:0.75em 1.6em;
+  font-size:1.02rem; 
+  font-weight:700; 
+  cursor:pointer;
+  transition:background .18s, transform .12s;
+  box-shadow:0 1px 8px #00502222;
 
-    /* Services complémentaires */
-    .more-services{
-      max-width:900px; margin: 3rem auto; padding:1.8rem 1rem 1.4rem;
-      background:#fff; border-radius:1.4em;
-      box-shadow: 0 8px 28px #00502210;
-    }
-    .more-services h3{
-      color:var(--vert-fonce); text-align:center; font-size:1.5rem; margin-bottom:1.2rem;
-    }
-    .services-grid{
-      display:grid; grid-template-columns: 1fr 1fr; gap:1.6rem;
-    }
-    .service-block{
-      background:#f9fbfa; border-left:4px solid var(--vert);
-      border-radius:0.9em; padding:1.2em; min-width:180px; max-width:360px; margin:0 auto;
-    }
-    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem;}
-    .service-block ul{ margin:0; padding-left:1.1em;}
-    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
+  margin-top:40px;      /* décalage global ~1 cm */
+  align-self:flex-start; /* évite l’étirement horizontal */
+}
+.cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
 
-    .features{
-      margin:2rem auto 3rem; max-width:950px;
-      display:flex; flex-wrap:nowrap; gap:1em; justify-content:center;
-    }
-    .feature-item{
-      flex:1 1 220px; background:#e4f8e5; border-radius:1em; padding:1.05em; text-align:center; min-width:180px; max-width:230px;
-    }
-    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
-    .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce); }
+/* Réglage fin: Essentiel à 56px pour rattraper l’écart visuel */
+.card.essentiel .cta-btn{ margin-top:56px; }
 
-    .client-section {
-      text-align: center;
-      margin: 3.2rem auto 2rem auto;
-      padding: 2.1rem 1rem 2.0rem 1rem;
-      max-width: 520px;
-      background: #fff;
-      border-radius: 1em;
-      box-shadow: 0 6px 20px #00502211;
-    }
-    .client-section h3 {
-      color: #005022;
-      margin-bottom: 1.3rem;
-      font-size: 1.35rem;
-      font-weight: 600;
-    }
-    .client-btn {
-      background: linear-gradient(90deg, #005022 80%, #007833 100%);
-      color: #fff;
-      border: none;
-      padding: 1em 2.8em;
-      border-radius: 30px;
-      font-size: 1.16rem;
-      font-weight: bold;
-      box-shadow: 0 2px 8px #00502226;
-      cursor: pointer;
-      transition: background .15s, transform .12s;
-    }
-    .client-btn:hover { background: #007833; transform: scale(1.04); }
+/* Services complémentaires */
+.more-services{
+  max-width:900px; margin: 3rem auto; padding:1.8rem 1rem 1.4rem;
+  background:#fff; border-radius:1.4em;
+  box-shadow: 0 8px 28px #00502210;
+}
+.more-services h3{
+  color:var(--vert-fonce); text-align:center; font-size:1.5rem; margin-bottom:1.2rem;
+}
+.services-grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap:1.6rem;
+}
+.service-block{
+  background:#f9fbfa; border-left:4px solid var(--vert);
+  border-radius:0.9em; padding:1.2em; min-width:180px; max-width:360px; margin:0 auto;
+}
+.service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem;}
+.service-block ul{ margin:0; padding-left:1.1em;}
+.service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
 
-    .contact-section{
-      background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
-    }
-    .contact-section h3{ color:#fff; margin:0 0 1.1rem; }
-    .contact-info p{ margin:0.5em 0; font-size:1.08rem; }
-    .contact-info b{ font-size:1.12rem; }
-    .oec-img{
-      margin-top:1.6rem;
-      display:block;
-      margin-left:auto;
-      margin-right:auto;
-      width:240px;  
-      max-width:90vw;
-      height:auto;
-    }
+/* Avantages */
+.features{
+  margin:2rem auto 3rem; max-width:950px;
+  display:flex; flex-wrap:nowrap; gap:1em; justify-content:center;
+}
+.feature-item{
+  flex:1 1 220px; background:#e4f8e5; border-radius:1em; padding:1.05em; text-align:center; min-width:180px; max-width:230px;
+}
+.feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
+.feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce); }
 
-    footer{ background:#222; color:#fff; text-align:center; padding:1rem; }
-    footer p{ margin:0; font-size:0.95rem; }
+/* ESPACE CLIENT */
+.client-section {
+  text-align: center;
+  margin: 3.2rem auto 2rem auto;
+  padding: 2.1rem 1rem 2.0rem 1rem;
+  max-width: 520px;
+  background: #fff;
+  border-radius: 1em;
+  box-shadow: 0 6px 20px #00502211;
+}
+.client-section h3 {
+  color: #005022;
+  margin-bottom: 1.3rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.client-btn {
+  background: linear-gradient(90deg, #005022 80%, #007833 100%);
+  color: #fff;
+  border: none;
+  padding: 1em 2.8em;
+  border-radius: 30px;
+  font-size: 1.16rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px #00502226;
+  cursor: pointer;
+  transition: background .15s, transform .12s;
+}
+.client-btn:hover { background: #007833; transform: scale(1.04); }
 
-    @media (max-width:1150px){
-      .features{ flex-wrap:wrap; gap:1em; }
-      .feature-item{ max-width:99vw; }
-    }
-    @media (max-width:950px){
-      .offers{ flex-direction:column; align-items:center; }
-      .card, .service-block, .client-section{ max-width:98vw; }
-      .services-grid{ grid-template-columns: 1fr; }
-      .brand-logo{ width:320px; }
-      .features{ flex-wrap:wrap; }
-      .cta-btn{ align-self:center; }
-    }
+.contact-section{
+  background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
+}
+.contact-section h3{ color:#fff; margin:0 0 1.1rem; }
+.contact-info p{ margin:0.5em 0; font-size:1.08rem; }
+.contact-info b{ font-size:1.12rem; }
+.oec-img{
+  margin-top:1.6rem;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  width:240px;
+  max-width:90vw;
+  height:auto;
+}
 
-    @keyframes fadeInUp{
-      0%{ opacity:0; transform: translateY(40px); }
-      100%{ opacity:1; transform:none; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-inner">
-      <!-- Logo centré 420px (non cliquable) -->
-      <img src="ADNRxCOGEX.png" alt="Logo ADNR x COGEX" class="brand-logo">
-    </div>
-    <div class="header-separator"></div>
-    <div class="subheader-green">
-      <h2 class="subtitle">Cabinet d'expertise-comptable spécialisé Professions Libérales</h2>
-    </div>
-    <nav>
-      <a href="#offres">Offres</a>
-      <a href="#services">Services</a>
-      <a href="#avantages">Avantages</a>
-      <button class="nav-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">Espace Client</button>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+footer{ background:#222; color:#fff; text-align:center; padding:1rem; }
+footer p{ margin:0; font-size:0.95rem; }
 
-  <main>
-    <!-- OFFRES PRINCIPALES -->
-    <section id="offres" class="offers">
-      <div class="card essentiel" style="animation-delay:.1s">
-        <h3>ESSENTIEL</h3>
-        <div class="price">69€ HT/mois</div>
-        <ul>
-          <li>Établissement des comptes annuels</li>
-          <li>Espace dédié pour dépôt des documents</li>
-          <li>Établissement déclarations fiscales courantes</li>
-          <li>Bilan visé par un expert comptable</li>
-        </ul>
-        <button class="cta-btn"
-          onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Essentiel'">
-          Je demande ce forfait
-        </button>
-      </div>
+@media (max-width:1150px){
+  .features{ flex-wrap:wrap; gap:1em; }
+  .feature-item{ max-width:99vw; }
+}
+@media (max-width:950px){
+  .offers{ flex-direction:column; align-items:center; }
+  .card, .service-block, .client-section{ max-width:98vw; }
+  .services-grid{ grid-template-columns: 1fr; }
+  .brand-logo{ width:320px; }
+  .features{ flex-wrap:wrap; }
+  .cta-btn{ align-self:center; } /* centrage visuel du bouton sur mobile */
+}
 
-      <div class="card pilotage active" style="animation-delay:.22s">
-        <div class="badge">LE PLUS POPULAIRE</div>
-        <h3>PILOTAGE</h3>
-        <div class="price">89€ HT/mois</div>
-        <ul>
-          <li>Tous les services Essentiel</li>
-          <li>Équipe dédiée de collaborateurs comptables</li>
-          <li>Optimisation des frais de déplacement (IK vs frais réels)</li>
-          <li>Vérification des appels de cotisations sociales</li>
-          <li>Tableau de bord en ligne</li>
-        </ul>
-        <button class="cta-btn"
-          onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d\'information - Forfait Pilotage'">
-          Découvrir Pilotage
-        </button>
-      </div>
-
-      <div class="card performance" style="animation-delay:.34s">
-        <h3>PERFORMANCE</h3>
-        <div class="price">119€ HT/mois</div>
-        <ul>
-          <li>Tous les services Pilotage</li>
-          <li>Rendez-vous avec un expert-comptable</li>
-          <li>Situation comptable intermédiaire</li>
-          <li>Bilan social (prévoyance retraite)</li>
-          <li>Aide à la déclaration des revenus professionnels</li>
-          <li>Réponses sous 48h</li>
-        </ul>
-        <button class="cta-btn"
-          onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Performance'">
-          Forfait Premium
-        </button>
-      </div>
-    </section>
-
-    <!-- AVANTAGES : 4 avantages sur une ligne -->
-    <section id="avantages" class="features">
-      <div class="feature-item"><span>🎯</span><h5>SPÉCIALISATION BNC</h5><div>Expert des professions libérales</div></div>
-      <div class="feature-item"><span>🚀</span><h5>ACCOMPAGNEMENT CROISSANCE</h5><div>De la création à la structuration en société</div></div>
-      <div class="feature-item"><span>📱</span><h5>OUTILS DIGITAUX</h5><div>Plateforme sécurisée et tableau de bord</div></div>
-      <div class="feature-item"><span>⚡</span><h5>RÉACTIVITÉ</h5><div>Réponses garanties sous 48h en formule Performance</div></div>
-    </section>
-
-    <!-- ESPACE CLIENT -->
-    <section class="client-section">
-      <h3>Accès sécurisé à votre espace client</h3>
-      <button class="client-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">
-        Espace Client
-      </button>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-      <h3>Contactez-nous</h3>
-      <div class="contact-info">
-        <p><b>Adresse&nbsp;mail :</b> <a href="mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d'information via la plaquette digitale" style="color:#fff; text-decoration:underline;">contact@cabinet-cabb.fr</a></p>
-        <p><b>Téléphone :</b> [Votre numéro]</p>
-        <p><b>Site web :</b> [Votre site web]</p>
-        <p><b>Adresse :</b> [Votre adresse]</p>
-      </div>
-      <img src="OEC.png" alt="OEC" class="oec-img">
-    </section>
-  </main>
-
-  <footer>
-    <p>SARL AUDIT GESTION EXPERTISE COMPTABLE © 2025</p>
-  </footer>
-
-  <script>
-    // Apparition des cartes
-    document.addEventListener('DOMContentLoaded', ()=>{
-      document.querySelectorAll('.card').forEach((c)=>{ c.style.opacity=1; });
-    });
-  </script>
-</body>
-</html>
+@keyframes fadeInUp{
+  0%{ opacity:0; transform: translateY(40px); }
+  100%{ opacity:1; transform:none; }
+}

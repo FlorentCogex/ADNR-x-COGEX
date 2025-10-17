@@ -85,7 +85,7 @@
     .offers{
       display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
       margin:2.2rem auto 2rem; max-width:1100px;
-      align-items:stretch; /* mêmes hauteurs de cartes */
+      align-items:stretch;
     }
     .card{
       background:#fff; border-radius:1.1em;
@@ -98,22 +98,16 @@
 
       display:flex; flex-direction:column;
     }
-    .card.pilotage{ border-bottom-color: var(--vert); }
-    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322; }
+    .card.pilotage{ border-bottom-color: var(--vert);}
+    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
     .card .badge{
       position:absolute; top:14px; right:16px;
       background: var(--vert); color:#fff; font-size:0.92rem; font-weight:600;
       border-radius:20px; padding:0.22em 0.9em;
       box-shadow: 0 1px 7px #00502230; z-index:2;
     }
-
-    /* Titre + prix */
     .card h3{ font-size:1.28rem; margin:0 0 0.6rem; }
-    .card .price{
-      font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem;
-    }
-
-    /* Listes en noir, sans coches */
+    .card .price{ font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem; }
     .card ul{ list-style:none; padding:0; margin:0.2rem 0 0; }
     .card ul li{
       padding:0.45em 0;
@@ -123,33 +117,36 @@
       text-align:left;
       padding-left:0;
     }
-
-    /* ALIGNEMENT FIN DES PREMIÈRES LIGNES LISTÉES ENTRE CARTES */
-    /* On ajuste l’espace juste avant la liste pour compenser les différences de contenus */
     .card.essentiel .price{ margin-bottom: 0.8rem; }
-    .card.essentiel ul{ margin-top: 0.7rem; } /* rapproche un peu la liste */
-
-    .card.pilotage .price{ margin-bottom: 1.1rem; }   /* pousse légèrement la liste vers le bas */
-    .card.performance .price{ margin-bottom: 1.1rem; } /* idem pour Performance */
+    .card.essentiel ul{ margin-top: 0.6rem; }
+    .card.pilotage .price{ margin-bottom: 1.0rem; }
+    .card.performance .price{ margin-bottom: 1.0rem; }
 
     /* ESPACE AVANT BOUTONS (~1 cm ≈ 40px) + bouton en bas */
     .cta-btn{
-      background:var(--vert-fonce); color:#fff; border:none;
-      border-radius:24px; padding:0.75em 1.6em;
-      font-size:1.02rem; font-weight:700; cursor:pointer;
+      background:var(--vert-fonce); 
+      color:#fff; 
+      border:none;
+      border-radius:24px; 
+      padding:0.75em 1.6em;
+      font-size:1.02rem; 
+      font-weight:700; 
+      cursor:pointer;
       transition:background .18s, transform .12s;
       box-shadow:0 1px 8px #00502222;
 
-      margin-top:auto;     /* colle le bouton en bas */
-      margin-top:40px;     /* et descend visuellement de ~1 cm */
+      margin-top:auto;
+      margin-top:40px;
       align-self:flex-start;
     }
-    .cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
-
-      /* Ajustement spécifique: abaisser davantage le bouton de la carte Essentiel */
-      .card.essentiel .cta-btn{ 
+    .cta-btn:hover{ 
+      background:var(--vert); 
+      transform:scale(1.04); 
+    }
+    .card.essentiel .cta-btn{ 
       margin-top:56px; 
-}
+    }
+
     /* Services complémentaires */
     .more-services{
       max-width:900px; margin: 3rem auto; padding:1.8rem 1rem 1.4rem;
@@ -166,11 +163,10 @@
       background:#f9fbfa; border-left:4px solid var(--vert);
       border-radius:0.9em; padding:1.2em; min-width:180px; max-width:360px; margin:0 auto;
     }
-    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem; }
-    .service-block ul{ margin:0; padding-left:1.1em; }
-    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0; }
+    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem;}
+    .service-block ul{ margin:0; padding-left:1.1em;}
+    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
 
-    /* Avantages (4 sur une ligne) */
     .features{
       margin:2rem auto 3rem; max-width:950px;
       display:flex; flex-wrap:nowrap; gap:1em; justify-content:center;
@@ -178,10 +174,9 @@
     .feature-item{
       flex:1 1 220px; background:#e4f8e5; border-radius:1em; padding:1.05em; text-align:center; min-width:180px; max-width:230px;
     }
-    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em; }
+    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
     .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce); }
 
-    /* ESPACE CLIENT */
     .client-section {
       text-align: center;
       margin: 3.2rem auto 2rem auto;
@@ -211,7 +206,6 @@
     }
     .client-btn:hover { background: #007833; transform: scale(1.04); }
 
-    /* Contact */
     .contact-section{
       background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
     }
@@ -223,7 +217,7 @@
       display:block;
       margin-left:auto;
       margin-right:auto;
-      width:240px;  /* 240 px demandé */
+      width:240px;  
       max-width:90vw;
       height:auto;
     }
@@ -231,7 +225,6 @@
     footer{ background:#222; color:#fff; text-align:center; padding:1rem; }
     footer p{ margin:0; font-size:0.95rem; }
 
-    /* Responsive */
     @media (max-width:1150px){
       .features{ flex-wrap:wrap; gap:1em; }
       .feature-item{ max-width:99vw; }
@@ -364,4 +357,3 @@
   </script>
 </body>
 </html>
-

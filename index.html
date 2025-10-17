@@ -21,7 +21,6 @@
       background:#f7f8fa;
       color:var(--texte);
     }
-
     header{
       background: var(--blanc);
       color:#000;
@@ -47,21 +46,13 @@
     .subheader-green{
       background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
       color:#ffffff;
-      padding:0.9rem 1rem 1rem;
+      padding:1rem 1rem 1rem;
     }
     .subheader-green .subtitle{
-      margin:0 0 0.25rem 0;
+      margin:0;
       font-weight:600;
       font-size:1.25rem;
       letter-spacing:0.02em;
-      color:#ffffff;
-    }
-    .subheader-green .tagline{
-      display:block;
-      margin:0;
-      font-weight:400;
-      font-size:1.05rem;
-      opacity:0.95;
       color:#ffffff;
     }
     nav{
@@ -160,7 +151,6 @@
     .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
     .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce); }
 
-    /* ESPACE CLIENT */
     .client-section {
       text-align: center;
       margin: 3.2rem auto 2rem auto;
@@ -199,20 +189,24 @@
     .contact-section h3{ color:#fff; margin:0 0 1.1rem;}
     .contact-info p{ margin:0.5em 0; font-size:1.08rem;}
     .contact-info b{ font-size:1.12rem;}
-    .brand-mention{
-      margin-top:1.2rem; font-size:1rem; opacity:0.95;
+    .brand-mention-img{
+      margin-top:1.2rem;
+      display:block;
+      width:110px;
+      height:auto;
+      margin-left:auto;
+      margin-right:auto;
+      opacity:1;
     }
-
     footer{ background:#222; color:#fff; text-align:center; padding:1rem;}
     footer p{ margin:0; font-size:0.95rem;}
-
     @media (max-width:900px){
       .offers, .features{ flex-direction:column; align-items:center;}
-      .card, .service-block, .client-section{ max-width:98vw; }
+      .card, .service-block, .client-section{ max-width:98vw;}
       .services-grid{ grid-template-columns: 1fr; }
       .brand-logo{ width:320px;}
+      .brand-mention-img{ width:90px;}
     }
-
     @keyframes fadeInUp{
       0%{ opacity:0; transform: translateY(40px);}
       100%{ opacity:1; transform:none;}
@@ -222,30 +216,21 @@
 <body>
   <header>
     <div class="header-inner">
-      <!-- Logo centré 420px (non cliquable) -->
       <img src="ADNRxCOGEX.png" alt="Logo ADNR x COGEX" class="brand-logo">
     </div>
-
-    <!-- Fine ligne verte (~1 mm) juste sous le logo -->
     <div class="header-separator"></div>
-
-    <!-- Bandeau vert avec le texte sous le logo -->
     <div class="subheader-green">
-      <h2 class="subtitle">expert-comptable spécialisé BNC</h2>
-      <em class="tagline">plus qu’un expert comptable, votre partenaire business</em>
+      <h2 class="subtitle">Cabinet d'expertise-comptable spécialisé Professions Libérales</h2>
     </div>
-
     <nav>
       <a href="#offres">Offres</a>
       <a href="#services">Services</a>
       <a href="#avantages">Avantages</a>
-      <button class="nav-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">ESPACE CLIENT</button>
+      <button class="nav-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">Espace Client</button>
       <a href="#contact">Contact</a>
     </nav>
   </header>
-
   <main>
-    <!-- OFFRES PRINCIPALES -->
     <section id="offres" class="offers">
       <div class="card essentiel" style="animation-delay:.1s">
         <h3>ESSENTIEL</h3>
@@ -260,7 +245,6 @@
           Je demande ce forfait
         </button>
       </div>
-
       <div class="card pilotage active" style="animation-delay:.22s">
         <div class="badge">LE PLUS POPULAIRE</div>
         <h3>PILOTAGE</h3>
@@ -276,7 +260,6 @@
           Découvrir Pilotage
         </button>
       </div>
-
       <div class="card performance" style="animation-delay:.34s">
         <h3>PERFORMANCE</h3>
         <div class="price">119€ HT/mois</div>
@@ -293,8 +276,6 @@
         </button>
       </div>
     </section>
-
-    <!-- SERVICES COMPLÉMENTAIRES -->
     <section id="services" class="more-services">
       <h3>Services Complémentaires</h3>
       <div class="services-grid">
@@ -329,8 +310,6 @@
         </div>
       </div>
     </section>
-
-    <!-- AVANTAGES -->
     <section id="avantages" class="features">
       <div class="feature-item"><span>🎯</span><h5>SPÉCIALISATION BNC</h5><div>Expert des professions libérales</div></div>
       <div class="feature-item"><span>💰</span><h5>OPTIMISATION FISCALE</h5><div>Conseil personnalisé pour minimiser vos charges</div></div>
@@ -338,16 +317,13 @@
       <div class="feature-item"><span>📱</span><h5>OUTILS DIGITAUX</h5><div>Plateforme sécurisée et tableau de bord</div></div>
       <div class="feature-item"><span>⚡</span><h5>RÉACTIVITÉ</h5><div>Réponses garanties sous 48h en formule Performance</div></div>
     </section>
-
-    <!-- ESPACE CLIENT -->
+    <!-- ESPACE CLIENT au-dessus du contact -->
     <section class="client-section">
       <h3>Accès sécurisé à votre espace client</h3>
       <button class="client-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">
-        ESPACE CLIENT
+        Espace Client
       </button>
     </section>
-
-    <!-- CONTACT -->
     <section id="contact" class="contact-section">
       <h3>Contactez-nous</h3>
       <div class="contact-info">
@@ -356,16 +332,14 @@
         <p><b>Site web :</b> [Votre site web]</p>
         <p><b>Adresse :</b> [Votre adresse]</p>
       </div>
-      <div class="brand-mention">ADNR x COGEX</div>
+      <!-- Remplacement de la mention par l'image OEC.png -->
+      <img src="OEC.png" alt="OEC" class="brand-mention-img">
     </section>
   </main>
-
   <footer>
-    <p>COGEX &copy; 2025</p>
+    <p>SARL AUDIT GESTION EXPERTISE COMPTABLE. 2025</p>
   </footer>
-
   <script>
-    // Apparition des cartes
     document.addEventListener('DOMContentLoaded', ()=>{
       document.querySelectorAll('.card').forEach((c)=>{ c.style.opacity=1; });
     });

@@ -127,10 +127,10 @@
     /* ALIGNEMENT FIN DES PREMIÈRES LIGNES LISTÉES ENTRE CARTES */
     /* On ajuste l’espace juste avant la liste pour compenser les différences de contenus */
     .card.essentiel .price{ margin-bottom: 0.8rem; }
-    .card.essentiel ul{ margin-top: 0.6rem; } /* rapproche un peu la liste */
+    .card.essentiel ul{ margin-top: 0.7rem; } /* rapproche un peu la liste */
 
-    .card.pilotage .price{ margin-bottom: 1.0rem; }   /* pousse légèrement la liste vers le bas */
-    .card.performance .price{ margin-bottom: 1.0rem; } /* idem pour Performance */
+    .card.pilotage .price{ margin-bottom: 1.1rem; }   /* pousse légèrement la liste vers le bas */
+    .card.performance .price{ margin-bottom: 1.1rem; } /* idem pour Performance */
 
     /* ESPACE AVANT BOUTONS (~1 cm ≈ 40px) + bouton en bas */
     .cta-btn{
@@ -146,6 +146,10 @@
     }
     .cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
 
+      /* Ajustement spécifique: abaisser davantage le bouton de la carte Essentiel */
+      .card.essentiel .cta-btn{ 
+      margin-top:56px; 
+}
     /* Services complémentaires */
     .more-services{
       max-width:900px; margin: 3rem auto; padding:1.8rem 1rem 1.4rem;
@@ -360,3 +364,4 @@
   </script>
 </body>
 </html>
+

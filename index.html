@@ -1,4 +1,5 @@
-*{ box-sizing:border-box; }
+<!DOCTYPE html><html lang="fr"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width,initial-scale=1.0"/> <title>Plaquette digitale</title> <meta name="description" content="Plaquette interactive pour professions libérales et santé intégrative"> <style> :root{ --vert-fonce:#005022; --vert:#007833; --blanc:#ffffff; --texte:#222222; --gris-bord:#e5ece7; }
+  *{ box-sizing:border-box; }
 body{
   margin:0;
   font-family: Helvetica, Arial, sans-serif;
@@ -80,7 +81,7 @@ nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
   border-bottom: 4px solid var(--vert-fonce);
   animation:fadeInUp 0.8s ease both; opacity:0;
 
-  display:flex; flex-direction:column; /* clé */
+  display:flex; flex-direction:column;
 }
 .card.pilotage{ border-bottom-color: var(--vert);}
 .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
@@ -93,15 +94,15 @@ nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
 .card h3{ font-size:1.28rem; margin:0 0 0.6rem; }
 .card .price{ font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem; }
 
-/* Contenu qui peut grandir pour pousser le bouton en bas */
-.card .content-flex{
+/* Contenu extensible pour pousser le bouton en bas */
+.content-flex{
   display:block;
-  flex:1 1 auto; /* clé: occupe l’espace restant */
+  flex:1 1 auto;
 }
-.card .content-flex ul{
+.content-flex ul{
   list-style:none; padding:0; margin:0.2rem 0 0;
 }
-.card .content-flex ul li{
+.content-flex ul li{
   padding:0.45em 0;
   border-bottom:1px solid var(--gris-bord);
   font-size:1.02rem; letter-spacing:0.01em;
@@ -110,7 +111,7 @@ nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
   padding-left:0;
 }
 
-/* ALIGNEMENT fin des premières lignes listées: petites variations de marge */
+/* Alignement fin des premières lignes listées */
 .card.essentiel .price{ margin-bottom: 0.8rem; }
 .card.essentiel .content-flex ul{ margin-top: 0.6rem; }
 .card.pilotage .price{ margin-bottom: 1.0rem; }
@@ -129,12 +130,12 @@ nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
   transition:background .18s, transform .12s;
   box-shadow:0 1px 8px #00502222;
 
-  margin-top:40px;      /* décalage global ~1 cm */
-  align-self:flex-start; /* évite l’étirement horizontal */
+  margin-top:40px;        /* décalage global */
+  align-self:flex-start;  /* pas d’étirement horizontal */
 }
 .cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
 
-/* Réglage fin: Essentiel à 56px pour rattraper l’écart visuel */
+/* Réglage fin pour ESSENTIEL */
 .card.essentiel .cta-btn{ margin-top:56px; }
 
 /* Services complémentaires */
@@ -198,6 +199,7 @@ nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
 }
 .client-btn:hover { background: #007833; transform: scale(1.04); }
 
+/* Contact */
 .contact-section{
   background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
 }
@@ -227,10 +229,78 @@ footer p{ margin:0; font-size:0.95rem; }
   .services-grid{ grid-template-columns: 1fr; }
   .brand-logo{ width:320px; }
   .features{ flex-wrap:wrap; }
-  .cta-btn{ align-self:center; } /* centrage visuel du bouton sur mobile */
+  .cta-btn{ align-self:center; }
 }
 
 @keyframes fadeInUp{
   0%{ opacity:0; transform: translateY(40px); }
   100%{ opacity:1; transform:none; }
 }
+</style> </head> <body> <header> <div class="header-inner"> <img src="ADNRxCOGEX.png" alt="Logo ADNR x COGEX" class="brand-logo"> </div> <div class="header-separator"></div> <div class="subheader-green"> <h2 class="subtitle">Cabinet d'expertise-comptable spécialisé Professions Libérales</h2> </div> <nav> <a href="#offres">Offres</a> <a href="#services">Services</a> <a href="#avantages">Avantages</a> <button class="nav-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">Espace Client</button> <a href="#contact">Contact</a> </nav> </header> <main> <!-- OFFRES PRINCIPALES --> <section id="offres" class="offers"> <div class="card essentiel" style="animation-delay:.1s"> <h3>ESSENTIEL</h3> <div class="price">69€ HT/mois</div> <div class="content-flex"> <ul> <li>Établissement des comptes annuels</li> <li>Espace dédié pour dépôt des documents</li> <li>Établissement déclarations fiscales courantes</li> <li>Bilan visé par un expert comptable</li> </ul> </div> <button class="cta-btn" onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Essentiel'"> Je demande ce forfait </button> </div>
+  <div class="card pilotage active" style="animation-delay:.22s">
+    <div class="badge">LE PLUS POPULAIRE</div>
+    <h3>PILOTAGE</h3>
+    <div class="price">89€ HT/mois</div>
+    <div class="content-flex">
+      <ul>
+        <li>Tous les services Essentiel</li>
+        <li>Équipe dédiée de collaborateurs comptables</li>
+        <li>Optimisation des frais de déplacement (IK vs frais réels)</li>
+        <li>Vérification des appels de cotisations sociales</li>
+        <li>Tableau de bord en ligne</li>
+      </ul>
+    </div>
+    <button class="cta-btn"
+      onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d\'information - Forfait Pilotage'">
+      Découvrir Pilotage
+    </button>
+  </div>
+
+  <div class="card performance" style="animation-delay:.34s">
+    <h3>PERFORMANCE</h3>
+    <div class="price">119€ HT/mois</div>
+    <div class="content-flex">
+      <ul>
+        <li>Tous les services Pilotage</li>
+        <li>Rendez-vous avec un expert-comptable</li>
+        <li>Situation comptable intermédiaire</li>
+        <li>Bilan social (prévoyance retraite)</li>
+        <li>Aide à la déclaration des revenus professionnels</li>
+        <li>Réponses sous 48h</li>
+      </ul>
+    </div>
+    <button class="cta-btn"
+      onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Performance'">
+      Forfait Premium
+    </button>
+  </div>
+</section>
+
+<!-- AVANTAGES -->
+<section id="avantages" class="features">
+  <div class="feature-item"><span>🎯</span><h5>SPÉCIALISATION BNC</h5><div>Expert des professions libérales</div></div>
+  <div class="feature-item"><span>🚀</span><h5>ACCOMPAGNEMENT CROISSANCE</h5><div>De la création à la structuration en société</div></div>
+  <div class="feature-item"><span>📱</span><h5>OUTILS DIGITAUX</h5><div>Plateforme sécurisée et tableau de bord</div></div>
+  <div class="feature-item"><span>⚡</span><h5>RÉACTIVITÉ</h5><div>Réponses garanties sous 48h en formule Performance</div></div>
+</section>
+
+<!-- ESPACE CLIENT -->
+<section class="client-section">
+  <h3>Accès sécurisé à votre espace client</h3>
+  <button class="client-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">
+    Espace Client
+  </button>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <h3>Contactez-nous</h3>
+  <div class="contact-info">
+    <p><b>Adresse&nbsp;mail :</b> <a href="mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d'information via la plaquette digitale" style="color:#fff; text-decoration:underline;">contact@cabinet-cabb.fr</a></p>
+    <p><b>Téléphone :</b> [Votre numéro]</p>
+    <p><b>Site web :</b> [Votre site web]</p>
+    <p><b>Adresse :</b> [Votre adresse]</p>
+  </div>
+  <img src="OEC.png" alt="OEC" class="oec-img">
+</section>
+</main> <footer> <p>SARL AUDIT GESTION EXPERTISE COMPTABLE © 2025</p> </footer> <script> document.addEventListener('DOMContentLoaded', ()=>{ document.querySelectorAll('.card').forEach((c)=>{ c.style.opacity=1; }); }); </script> </body> </html>

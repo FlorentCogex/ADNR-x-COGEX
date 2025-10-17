@@ -22,7 +22,6 @@
       color:var(--texte);
     }
 
-    /* En-tête reconfiguré: bandeau blanc + logo 420px, fine ligne verte, puis sous-bande verte avec le texte */
     header{
       background: var(--blanc);
       color:#000;
@@ -31,23 +30,20 @@
     .header-inner{
       max-width:1100px;
       margin:0 auto;
-      padding:1.2rem 1rem 0.4rem 1rem; /* bandeau blanc compact au-dessus du logo */
+      padding:1.2rem 1rem 0.4rem 1rem;
     }
-    /* Logo centré, non cliquable */
     .brand-logo{
       display:block;
       margin:0 auto;
-      width:420px;      /* demandé */
-      height:auto;      /* respect des proportions */
+      width:420px;
+      height:auto;
     }
-    /* Fine séparation verte (~1 mm) juste sous le logo */
     .header-separator{
-      height:2px; /* ≈1–1.5 mm selon écran */
+      height:2px;
       background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
       margin-top:6px;
       box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
-    /* Bandeau vert sous le logo, contenant les deux lignes */
     .subheader-green{
       background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
       color:#ffffff;
@@ -68,14 +64,12 @@
       opacity:0.95;
       color:#ffffff;
     }
-
-    /* Barre de navigation (sous le bandeau vert) */
     nav{
       background: linear-gradient(90deg, var(--vert-fonce) 80%, var(--vert) 100%);
       padding:0.8rem 1rem;
       text-align:center;
     }
-    nav a{
+    nav a, .nav-btn{
       color:#fff;
       text-decoration:none;
       padding:0.45em 1.1em;
@@ -85,10 +79,13 @@
       font-weight:600;
       transition:background .15s;
       display:inline-block;
+      font-family: inherit;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
     }
-    nav a:hover{ background:rgba(255,255,255,0.22); }
+    nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
 
-    /* OFFRES */
     .offers{
       display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
       margin:2.2rem auto 2rem; max-width:1100px;
@@ -102,20 +99,18 @@
       border-bottom: 4px solid var(--vert-fonce);
       animation:fadeInUp 0.8s ease both; opacity:0;
     }
-    .card.pilotage{ border-bottom-color: var(--vert); }
-    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322; }
+    .card.pilotage{ border-bottom-color: var(--vert);}
+    .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
     .card .badge{
       position:absolute; top:14px; right:16px;
       background: var(--vert); color:#fff; font-size:0.92rem; font-weight:600;
       border-radius:20px; padding:0.22em 0.9em;
       box-shadow: 0 1px 7px #00502230; z-index:2;
     }
-    .card h3{ font-size:1.28rem; margin:0 0 0.6rem; }
+    .card h3{ font-size:1.28rem; margin:0 0 0.6rem;}
     .card .price{
       font-size:1.6rem; color:var(--vert-fonce); font-weight:700; margin:0.2rem 0 0.8rem;
     }
-
-    /* Listes en noir, sans coches ni indentation gauche */
     .card ul{
       list-style:none; padding:0; margin:0.2rem 0 0;
     }
@@ -127,7 +122,6 @@
       text-align:left;
       padding-left:0;
     }
-
     .cta-btn{
       display:inline-block; margin-top:1.2em;
       background:var(--vert-fonce); color:#fff; border:none;
@@ -138,7 +132,6 @@
     }
     .cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
 
-    /* Services complémentaires */
     .more-services{
       max-width:900px; margin: 3rem auto; padding:1.8rem 1rem 1.4rem;
       background:#fff; border-radius:1.4em;
@@ -154,46 +147,75 @@
       background:#f9fbfa; border-left:4px solid var(--vert);
       border-radius:0.9em; padding:1.2em; min-width:180px; max-width:360px; margin:0 auto;
     }
-    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem; }
-    .service-block ul{ margin:0; padding-left:1.1em; }
-    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0; }
+    .service-block h4{ color:var(--vert); margin:0 0 0.6em; font-size:1.18rem;}
+    .service-block ul{ margin:0; padding-left:1.1em;}
+    .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
 
-    /* Avantages */
     .features{
       margin:2rem auto 3rem; max-width:950px; display:flex; flex-wrap:wrap; gap:1em; justify-content:center;
     }
     .feature-item{
       flex:1 1 220px; background:#e4f8e5; border-radius:1em; padding:1.05em; text-align:center; min-width:180px;
     }
-    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em; }
+    .feature-item span{ font-size:2em; display:block; margin-bottom:0.2em;}
     .feature-item h5{ margin:0.15em 0 0.25em; color:var(--vert-fonce); }
 
-    /* Contact */
+    /* ESPACE CLIENT */
+    .client-section {
+      text-align: center;
+      margin: 3.2rem auto 2rem auto;
+      padding: 2.1rem 1rem 2.0rem 1rem;
+      max-width: 520px;
+      background: #fff;
+      border-radius: 1em;
+      box-shadow: 0 6px 20px #00502211;
+    }
+    .client-section h3 {
+      color: #005022;
+      margin-bottom: 1.3rem;
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+    .client-btn {
+      background: linear-gradient(90deg, #005022 80%, #007833 100%);
+      color: #fff;
+      border: none;
+      padding: 1em 2.8em;
+      border-radius: 30px;
+      font-size: 1.16rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px #00502226;
+      cursor: pointer;
+      transition: background .15s, transform .12s;
+    }
+    .client-btn:hover {
+      background: #007833;
+      transform: scale(1.04);
+    }
+
     .contact-section{
       background:var(--vert-fonce); color:#fff; text-align:center; padding:2.2rem 1rem 1.7rem;
     }
-    .contact-section h3{ color:#fff; margin:0 0 1.1rem; }
-    .contact-info p{ margin:0.5em 0; font-size:1.08rem; }
-    .contact-info b{ font-size:1.12rem; }
+    .contact-section h3{ color:#fff; margin:0 0 1.1rem;}
+    .contact-info p{ margin:0.5em 0; font-size:1.08rem;}
+    .contact-info b{ font-size:1.12rem;}
     .brand-mention{
       margin-top:1.2rem; font-size:1rem; opacity:0.95;
     }
 
-    /* Footer */
-    footer{ background:#222; color:#fff; text-align:center; padding:1rem; }
-    footer p{ margin:0; font-size:0.95rem; }
+    footer{ background:#222; color:#fff; text-align:center; padding:1rem;}
+    footer p{ margin:0; font-size:0.95rem;}
 
-    /* Responsive */
     @media (max-width:900px){
-      .offers, .features{ flex-direction:column; align-items:center; }
-      .card, .service-block{ max-width:98vw; }
+      .offers, .features{ flex-direction:column; align-items:center;}
+      .card, .service-block, .client-section{ max-width:98vw; }
       .services-grid{ grid-template-columns: 1fr; }
-      .brand-logo{ width:320px; }
+      .brand-logo{ width:320px;}
     }
 
     @keyframes fadeInUp{
-      0%{ opacity:0; transform: translateY(40px); }
-      100%{ opacity:1; transform:none; }
+      0%{ opacity:0; transform: translateY(40px);}
+      100%{ opacity:1; transform:none;}
     }
   </style>
 </head>
@@ -209,14 +231,15 @@
 
     <!-- Bandeau vert avec le texte sous le logo -->
     <div class="subheader-green">
-      <h2 class="subtitle">Cabinet d'expertise-comptable spécialisé Professions Libérales</h2>
-      <em class="tagline">Plus qu’un expert-comptable, votre partenaire business</em>
+      <h2 class="subtitle">expert-comptable spécialisé BNC</h2>
+      <em class="tagline">plus qu’un expert comptable, votre partenaire business</em>
     </div>
 
     <nav>
       <a href="#offres">Offres</a>
       <a href="#services">Services</a>
       <a href="#avantages">Avantages</a>
+      <button class="nav-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">ESPACE CLIENT</button>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -316,16 +339,23 @@
       <div class="feature-item"><span>⚡</span><h5>RÉACTIVITÉ</h5><div>Réponses garanties sous 48h en formule Performance</div></div>
     </section>
 
+    <!-- ESPACE CLIENT -->
+    <section class="client-section">
+      <h3>Accès sécurisé à votre espace client</h3>
+      <button class="client-btn" onclick="window.open('https://isuite.cabinet-cogex.fr/cnx/SuiteExpert/Connexion','_blank')">
+        ESPACE CLIENT
+      </button>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="contact-section">
       <h3>Contactez-nous</h3>
       <div class="contact-info">
-        <p><b>Adresse&nbsp;mail :</b> <a href="mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d'information via la plaquette digitale" style="color:#fff; text-decoration:underline;">florent.desblancs@cabinet-cogex.fr</a></p>
-        <p><b>Téléphone :</b> 06 24 43 46 63</p>
-        <p><b>Site web :</b> cabinet-cogex.fr</p>
-        <p><b>Adresse :</b> Boulevard Ange Delestrade - 13380 Plan de Cuques</p>
+        <p><b>Adresse&nbsp;mail :</b> <a href="mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d'information via la plaquette digitale" style="color:#fff; text-decoration:underline;">contact@cabinet-cabb.fr</a></p>
+        <p><b>Téléphone :</b> [Votre numéro]</p>
+        <p><b>Site web :</b> [Votre site web]</p>
+        <p><b>Adresse :</b> [Votre adresse]</p>
       </div>
-      <!-- Mention de marque sous Contact -->
       <div class="brand-mention">ADNR x COGEX</div>
     </section>
   </main>
@@ -342,5 +372,3 @@
   </script>
 </body>
 </html>
-
-

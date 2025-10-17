@@ -81,18 +81,23 @@
     .nav-btn { text-transform:unset; }
     nav a:hover, .nav-btn:hover{ background:rgba(255,255,255,0.22); }
 
+    /* OFFRES */
     .offers{
       display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
-      margin:2.2rem auto 1rem; max-width:1100px;
+      margin:2.2rem auto 2rem; max-width:1100px;
+      align-items:stretch; /* aligne toutes les cartes en hauteur */
     }
     .card{
       background:#fff; border-radius:1.1em;
       box-shadow: 0 8px 28px rgba(0,80,34,0.08), 0 1.5px 10px rgba(0,80,34,0.05);
       padding:1.8rem 1.4rem 1.6rem;
       max-width:340px; min-width:270px; flex:1;
-      text-align:left; position:relative; overflow:hidden;
+      position:relative; overflow:hidden;
       border-bottom: 4px solid var(--vert-fonce);
       animation:fadeInUp 0.8s ease both; opacity:0;
+
+      /* clé: carte en colonne, pour pousser le bouton en bas */
+      display:flex; flex-direction:column;
     }
     .card.pilotage{ border-bottom-color: var(--vert);}
     .card.active, .card.pilotage{ box-shadow: 0 14px 36px #00783322;}
@@ -118,28 +123,23 @@
       padding-left:0;
     }
 
-    /* Boutons des offres alignés horizontalement */
-    .offers-btns-row {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 1.5rem auto 2.4rem auto;
-      max-width: 950px;
-    }
+    /* espaceur qui prend la hauteur disponible avant le bouton */
+    .spacer{ flex:1 1 auto; }
+
     .cta-btn{
       background:var(--vert-fonce); color:#fff; border:none;
       border-radius:24px; padding:0.75em 1.6em;
       font-size:1.02rem; font-weight:700; cursor:pointer;
       transition:background .18s, transform .12s;
       box-shadow:0 1px 8px #00502222;
-      min-width: 180px;
+
+      /* clé: colle le bouton au bas de la carte */
+      margin-top:auto;
+      align-self:flex-start; /* évite l’étirement horizontal */
     }
     .cta-btn:hover{ background:var(--vert); transform:scale(1.04); }
-    .offers-btns-row .cta-btn {
-      font-size: 1.08rem;
-      margin: 0;
-    }
 
+    /* Services complémentaires */
     .more-services{
       max-width:900px; margin: 3rem auto; padding:1.8rem 1rem 1.4rem;
       background:#fff; border-radius:1.4em;
@@ -159,6 +159,7 @@
     .service-block ul{ margin:0; padding-left:1.1em;}
     .service-block li{ font-size:1rem; line-height:1.55; margin:0.18em 0;}
 
+    /* Avantages */
     .features{
       margin:2rem auto 3rem; max-width:950px;
       display:flex; flex-wrap:nowrap; gap:1em; justify-content:center;
@@ -210,12 +211,12 @@
     .contact-info b{ font-size:1.12rem;}
     .oec-img{
       margin-top:1.6rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 300px;
-      max-width: 90vw;
-      height: auto;
+      display:block;
+      margin-left:auto;
+      margin-right:auto;
+      width:240px;   /* réduit à 240 px */
+      max-width:90vw;
+      height:auto;
     }
 
     footer{ background:#222; color:#fff; text-align:center; padding:1rem;}
@@ -227,21 +228,12 @@
       .feature-item{max-width:99vw;}
     }
     @media (max-width:950px){
-      .offers, .features{ flex-direction:column; align-items:center;}
+      .offers{ flex-direction:column; align-items:center;}
       .card, .service-block, .client-section{ max-width:98vw; }
       .services-grid{ grid-template-columns: 1fr; }
       .brand-logo{ width:320px;}
       .features{flex-wrap:wrap;}
-      .offers-btns-row {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-      }
-      .offers-btns-row .cta-btn {
-        width:80vw;
-        min-width:unset;
-        font-size:1.08rem;
-      }
+      .cta-btn{ align-self:center; } /* centrer le bouton sur mobile */
     }
 
     @keyframes fadeInUp{
@@ -283,7 +275,13 @@
           <li>Établissement déclarations fiscales courantes</li>
           <li>Bilan visé par un expert comptable</li>
         </ul>
+        <div class="spacer"></div>
+        <button class="cta-btn"
+          onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Essentiel'">
+          Je demande ce forfait
+        </button>
       </div>
+
       <div class="card pilotage active" style="animation-delay:.22s">
         <div class="badge">LE PLUS POPULAIRE</div>
         <h3>PILOTAGE</h3>
@@ -295,7 +293,13 @@
           <li>Vérification des appels de cotisations sociales</li>
           <li>Tableau de bord en ligne</li>
         </ul>
+        <div class="spacer"></div>
+        <button class="cta-btn"
+          onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d\'information - Forfait Pilotage'">
+          Découvrir Pilotage
+        </button>
       </div>
+
       <div class="card performance" style="animation-delay:.34s">
         <h3>PERFORMANCE</h3>
         <div class="price">119€ HT/mois</div>
@@ -307,58 +311,11 @@
           <li>Aide à la déclaration des revenus professionnels</li>
           <li>Réponses sous 48h</li>
         </ul>
-      </div>
-    </section>
-
-    <!-- BOUTONS DES OFFRES ALIGNÉS HORIZONTALEMENT -->
-    <div class="offers-btns-row">
-      <button class="cta-btn"
-        onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Essentiel'">
-        Je demande ce forfait
-      </button>
-      <button class="cta-btn"
-        onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande d\'information - Forfait Pilotage'">
-        Découvrir Pilotage
-      </button>
-      <button class="cta-btn"
-        onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Performance'">
-        Forfait Premium
-      </button>
-    </div>
-
-    <!-- SERVICES COMPLÉMENTAIRES -->
-    <section id="services" class="more-services">
-      <h3>Services Complémentaires</h3>
-      <div class="services-grid">
-        <div class="service-block">
-          <h4>Gestion sociale</h4>
-          <ul>
-            <li>Bulletins de salaire</li>
-            <li>Contrat de travail</li>
-            <li>Déclaration sociale nominative</li>
-          </ul>
-        </div>
-        <div class="service-block">
-          <h4>Pilotage & Prévisionnel</h4>
-          <ul>
-            <li>Prévisionnel complet</li>
-          </ul>
-        </div>
-        <div class="service-block">
-          <h4>Patrimoine & Investissement</h4>
-          <ul>
-            <li>Création de SCM / SCI</li>
-            <li>Investissements LMNP / LMP</li>
-            <li>Déclaration des revenus professionnels (2042)</li>
-          </ul>
-        </div>
-        <div class="service-block">
-          <h4>Conseil stratégique</h4>
-          <ul>
-            <li>Accompagnement au choix de structure juridique (CA &lt; 100K€)</li>
-            <li>Conseil sur les structures à partir de 100K€ de CA</li>
-          </ul>
-        </div>
+        <div class="spacer"></div>
+        <button class="cta-btn"
+          onclick="window.location.href='mailto:florent.desblancs@cabinet-cogex.fr?subject=Demande de devis - Forfait Performance'">
+          Forfait Premium
+        </button>
       </div>
     </section>
 
@@ -387,7 +344,7 @@
         <p><b>Site web :</b> [Votre site web]</p>
         <p><b>Adresse :</b> [Votre adresse]</p>
       </div>
-      <!-- Image OEC placée ici -->
+      <!-- Image OEC réduite à 240 px -->
       <img src="OEC.png" alt="OEC" class="oec-img">
     </section>
   </main>
